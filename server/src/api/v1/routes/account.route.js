@@ -7,7 +7,5 @@ const router = express.Router()
 router.post('/login', accountController.login)
 // add new account
 router.post('/', accountController.register)
-// update user
-// router.put('/:id', accountController.updateUser)
 
 export default router
