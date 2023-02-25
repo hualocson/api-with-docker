@@ -21,7 +21,7 @@ const getUserById = async (req, res) => {
     const { id } = req.params
     try {
         const user = await userService.getUserById(id)
-        responseHandler.ok(res, user)
+        responseHandler.ok(res, { user })
     } catch (error) {
         responseHandler.error(res, error)
     }
@@ -33,7 +33,7 @@ const updateUser = async (req, res) => {
     const data = req.body
     try {
         const message = await userService.updateUser(id, data)
-        responseHandler.ok(res, message)
+        responseHandler.ok(res, { message })
     } catch (error) {
         responseHandler.error(res, error)
     }
