@@ -1,7 +1,7 @@
 import db from '../models/index.js'
 
 const addUser = async (data, accountId) => {
-    const { firstName, lastName, phone } = data
+    const { firstName, lastName, phone, avatar } = data
 
     // check account id is assign
     const user = await db.User.findOne({
@@ -19,10 +19,27 @@ const addUser = async (data, accountId) => {
         firstName,
         lastName,
         phone,
+        avatar,
         accountId,
     })
 
     return Promise.resolve({ user: newUser.toJSON() })
+}
+
+// [GET] '/users/'
+const getAllUser = async () => {
+    // user not exist will return null
+    try {
+        const users = await db.User.findAll()
+        return Promise.resolve({
+            users: users.map((user) => user.toJSON()),
+        })
+    } catch (error) {
+        return Promise.reject({
+            status: 500,
+            message: { error },
+        })
+    }
 }
 
 // [GET] '/users/:id'
@@ -67,4 +84,5 @@ export default {
     getUserById,
     updateUser,
     deleteUser,
+    getAllUser,
 }

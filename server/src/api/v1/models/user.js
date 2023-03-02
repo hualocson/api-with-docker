@@ -14,9 +14,13 @@ const defineUserModel = (sequelize, DataTypes) => {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
+            avatar: {
+                type: DataTypes.STRING,
+                allowNull: true,
+            },
         },
         {
-            timestamps: true,
+            timestamps: false,
             paranoid: true,
         },
     )

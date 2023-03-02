@@ -6,6 +6,8 @@ const router = express.Router()
 // add new user info
 router.post('/:accountId', userController.addUser)
 
+// get All user
+router.get('/', userController.getAllUser)
 // get user
 router.get('/:id', userController.getUserById)
 // update user
