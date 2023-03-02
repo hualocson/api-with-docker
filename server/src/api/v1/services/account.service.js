@@ -1,10 +1,9 @@
 import db from '../models/index.js'
-import userService from './user.service.js'
 import bcrypt from 'bcryptjs'
 
 // [POST]  '/accounts'
 const addAccount = async (email, password) => {
-    // await db.sequelize.sync({ alter: true })
+    // await db.sequelize.sync()
 
     // Check exist
     const account = await getAccountByEmail(email)

@@ -24,6 +24,8 @@ services:
     nodeapp:
         container_name: nodeappcontainer
         build: ./server
+        volumes:
+            - ./server:/usr/app
         image: nodeapp:v1
         ports:
             - 5001:5001

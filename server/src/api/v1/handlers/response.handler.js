@@ -30,7 +30,7 @@ const error = (res, error) => {
         default:
             responseWithData(res, 500, {
                 success: false,
-                data: {},
+                data: error.message,
                 message: 'Server get error!',
                 errorCode: 500,
             })

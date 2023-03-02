@@ -2,11 +2,6 @@ const defineAccountModel = (sequelize, DataTypes) => {
     const Account = sequelize.define(
         'Account',
         {
-            // roleId: {
-            //     type: DataTypes.INTEGER,
-            //     allowNull: false,
-            //     defaultValue: 1,
-            // },
             email: {
                 type: DataTypes.STRING,
                 allowNull: false,
@@ -21,6 +16,14 @@ const defineAccountModel = (sequelize, DataTypes) => {
             password: {
                 type: DataTypes.STRING,
                 allowNull: false,
+            },
+            createdAt: {
+                type: DataTypes.DATE,
+                defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+            },
+            updatedAt: {
+                type: DataTypes.DATE,
+                defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
             },
         },
         {

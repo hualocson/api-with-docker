@@ -8,7 +8,6 @@ const Role = defineRoleModel(sequelize, DataTypes)
 const Account = defineAccountModel(sequelize, DataTypes)
 const User = defineUserModel(sequelize, DataTypes)
 
-Role.hasOne(Account)
 Account.belongsTo(Role, {
     foreignKey: {
         name: 'roleId',
@@ -16,17 +15,21 @@ Account.belongsTo(Role, {
         allowNull: false,
         defaultValue: 1,
     },
+    uniqueKey: 'FK_AccountRole',
+    targetKey: 'id',
 })
-Account.removeAttribute('RoleId')
+Role.hasOne(Account)
 
-Account.hasOne(User)
 User.belongsTo(Account, {
     foreignKey: {
         name: 'accountId',
         field: 'accountId',
         allowNull: false,
     },
+    uniqueKey: 'FK_AccountUser',
+    targetKey: 'id',
 })
+Account.hasOne(User)
 User.removeAttribute('AccountId')
 
 const db = {

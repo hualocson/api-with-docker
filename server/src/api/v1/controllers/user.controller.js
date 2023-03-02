@@ -15,12 +15,21 @@ const addUser = async (req, res) => {
         responseHandler.error(res, error)
     }
 }
+// [GET] '/users/:id'
+const getAllUser = async (req, res) => {
+    try {
+        const { users } = await userService.getAllUser()
+        responseHandler.ok(res, { users })
+    } catch (error) {
+        responseHandler.error(res, error)
+    }
+}
 
 // [GET] '/users/:id'
 const getUserById = async (req, res) => {
     const { id } = req.params
     try {
-        const user = await userService.getUserById(id)
+        const { user } = await userService.getUserById(id)
         responseHandler.ok(res, { user })
     } catch (error) {
         responseHandler.error(res, error)
@@ -53,4 +62,5 @@ export default {
     getUserById,
     updateUser,
     deleteUser,
+    getAllUser,
 }
