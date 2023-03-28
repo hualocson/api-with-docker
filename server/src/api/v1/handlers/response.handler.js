@@ -1,18 +1,25 @@
 /* Format for response
+{
+    "success": true or false,
+    "data": {}
+    "message": "This is message for response",
+    "statusCode": 200 or 404 or 500,
+}
 1. Success:
 {
     "success": true,
     "data": {
         //Some data for success
-    }
-    message: "This is message for success response"
+    },
+    message: "This is message for success response",
+    "statusCode": 200 or 201
 }
 2. Failure
 {
     "success": false,
     "data": {},
     "message": "This is error",
-    "error_code": 404
+    "statusCode": 404 or 500
 }
 */
 
@@ -32,7 +39,7 @@ const error = (res, error) => {
                 success: false,
                 data: error.message,
                 message: 'Server get error!',
-                errorCode: 500,
+                statusCode: 500,
             })
             break
     }
@@ -43,7 +50,7 @@ const badRequest = (res, message) =>
         success: false,
         data: {},
         message: message,
-        errorCode: 400,
+        statusCode: 400,
     })
 
 const notFound = (res, message) =>
@@ -51,7 +58,7 @@ const notFound = (res, message) =>
         success: false,
         data: {},
         message: message,
-        errorCode: 404,
+        statusCode: 404,
     })
 
 const ok = (res, data) =>
@@ -59,6 +66,7 @@ const ok = (res, data) =>
         success: true,
         data,
         message: 'Request successful!',
+        statusCode: 200,
     })
 
 const created = (res, data) =>
@@ -66,6 +74,7 @@ const created = (res, data) =>
         success: true,
         data,
         message: 'Create successful!',
+        statusCode: 201,
     })
 
 export default {
