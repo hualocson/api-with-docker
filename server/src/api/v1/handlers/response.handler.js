@@ -48,7 +48,7 @@ const error = (res, error) => {
 const badRequest = (res, message) =>
     responseWithData(res, 400, {
         success: false,
-        data: {},
+        data: null,
         message: message,
         statusCode: 400,
     })
@@ -56,7 +56,7 @@ const badRequest = (res, message) =>
 const notFound = (res, message) =>
     responseWithData(res, 404, {
         success: false,
-        data: {},
+        data: null,
         message: message,
         statusCode: 404,
     })

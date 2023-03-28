@@ -23,9 +23,9 @@ const login = async (req, res) => {
         const { email, password } = req.body
         // TODO: validate data
 
-        const account_id = await accountService.login(email, password)
+        const accountId = await accountService.login(email, password)
 
-        responseHandler.ok(res, account_id)
+        responseHandler.ok(res, accountId)
     } catch (error) {
         responseHandler.error(res, error)
     }

@@ -45,7 +45,7 @@ const login = async (email, password) => {
             message: 'Invalid Password',
         })
 
-    return Promise.resolve({ account_id: account.id })
+    return Promise.resolve({ accountId: account.id })
 }
 
 const getAccountByEmail = async (email) => {
