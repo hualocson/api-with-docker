@@ -22,6 +22,7 @@ services:
             - internalnet
 
     nodeapp:
+        env_file: ./server/.env
         container_name: nodeappcontainer
         build: ./server
         volumes:
@@ -34,12 +35,12 @@ services:
         environment:
             DB_HOSTNAME: mysqldb
             DB_PORT: 3306
-            DB_USER: admin
-            DB_PASSWORD: my-secret-pw
-            DB_NAME: dev_test
+            DB_USER: ${DB_USER}
+            DB_PASSWORD: ${DB_PASSWORD}
+            DB_NAME: ${DB_NAME}
             SERVICE_TAGS: dev
             SERVICE_NAME: nodeapp
-            SERVER_PORT: 5001
+            SERVER_PORT: ${SERVER_PORT}
         depends_on:
             - mysqldb
         networks:
